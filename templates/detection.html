@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection</title>
+    {% include 'bootstrap.html' %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #b6cde5, #123a75);
+            
+        }
+
+        #bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        #image {
+            height: 90vh;
+            width: 80%;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Bubble animations */
+        @keyframes rise {
+            0% { bottom: -100px; }
+            100% { bottom: 110%; }
+        }
+
+        @keyframes grow {
+            0%, 100% { transform: scale(0); }
+            50% { transform: scale(1); }
+        }
+
+        .text-center {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="bubbles">
+        <!-- Generate multiple divs for bubbles here, or use JavaScript to generate dynamically -->
+        <!-- Example static bubble -->
+        <div class="bubble" style="width: 40px; height: 40px; left: 20%; animation: rise 10s infinite linear, grow 10s infinite ease-in-out;"></div>
+        <!-- Add more bubbles with different sizes, animation delays, etc. -->
+    </div>
+    <div class="text-center mt-4 mb-4">
+        <h2>Processed Video Stream</h2>
+        <p style="position: absolute; top: 50%; left: 45%;"><b>No Video Uploaded</b></p>
+        <img id="image" src="{{ url_for('video_feed') }}" alt="Video stream">
+     </div>
+     <div class="text-center mt-2 mb-4">
+     <a class="mt-4 text-center btn btn-warning" href="{{url_for('home')}}">Home</a>   
+    </div> 
+   
+
+    <script>
+    function generateBubbles(numberOfBubbles) {
+        const bubblesContainer = document.getElementById('bubbles');
+        
+        for (let i = 0; i < numberOfBubbles; i++) {
+            // Create a bubble
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random size from 10px to 60px
+            const size = Math.random() * 50 + 10; // Adjust size range here
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // Random position across the width of the screen
+            bubble.style.left = `${Math.random() * 100}%`;
+            
+            // Random animation durations for the rise and grow effects
+            const riseDuration = Math.random() * 15 + 5; // Adjust time range here
+            const growDuration = Math.random() * 15 + 5; // Adjust time range here
+            bubble.style.animation = `rise ${riseDuration}s infinite linear, grow ${growDuration}s infinite ease-in-out`;
+            
+            // Append the bubble to the container
+            bubblesContainer.appendChild(bubble);
+        }
+    }
+
+    // Call the function with the desired number of bubbles
+    generateBubbles(100); // Feel free to adjust the number of bubbles
+
+
+    // You could add a script here to dynamically create bubbles
+</script>
+{%include 'footer.html'%}
+</body>
+</html>

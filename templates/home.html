@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        #ulid{
+            text-decoration: none;
+            position: relative;
+            left: 2%;
+        }
+
+        .image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between images */
+    margin-top: 20px; /* Add margin to the top */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+  }
+
+  .image-row img {
+    width: 330px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px; 
+    transition: transform 0.3s ease;
+  }
+
+  .image-row img:hover {
+    transform: scale(1.1); 
+  }
+        #liid{
+            font-size: 24px;
+            padding-top: 1%;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 1%;
+        }
+        .content {
+      padding: 0;
+      box-sizing: border-box;
+    }
+        #image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    </style>
+    {%include 'bootstrap.html'%}
+</head>
+<body>
+    <img id="image" src="static/home bg.jpg" alt="">
+    <div class="content">
+        <div class="bg-white text-lg-start mt-0">
+        <ul id="ulid" class="row bg-white text-lg-start mt-0">
+            <li id="liid" style="position: relative; left: 2%;" class="col lead">Upload Video</li>
+             <li id="liid" style="position: relative; left: 3%;" class="col lead">Generate Frames</li>
+             <li id="liid" style="position: relative; left: 8%;" class="col lead">Detect Faces</li>
+             <li id="liid" style="position: relative; left: 12%;" class="col lead">Result</li>
+            </ul>
+            
+            
+            <div class="bg-light text-dark text-lg-start mt-0 p-4 rounded-lg shadow">
+                <div class="row">
+                    <div class="col">
+        
+                        <p style="font-size:30px; position: relative; top: 35%; left: 20%;"><b>How does it work?</b></p>
+                      </div>
+                      <div class="col lead text-center" style="font-size: 22px; position: relative; right: 5%;">
+                        <p>📌  The process initiates by converting video frames into grayscale to simplify analysis 
+                            while preserving essential facial details. OpenCV's Haar cascade classifier then scans
+                             these grayscale frames, sliding a detection window across various scales to identify 
+                             potential facial patterns based on edges, textures, and shapes. Upon detecting a face,
+                              the algorithm outlines its location by drawing a green rectangle on the original color frame. This iterative process occurs for each frame, facilitating real-time face detection and visualization within the video stream. Ultimately, this system provides dynamic face identification, with applications spanning surveillance, security, and human-computer interaction.</p>
+              
+                      </div>
+
+                </div>
+                <div class="text-center mt-4">
+                <a class="text-center btn btn-warning" href="{{url_for('videodrop')}}">Upload a Video</a>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="bg-light text-dark text-lg-start mt-0 p-4 rounded-lg shadow">
+                <h2 class="text-center fw-bold mb-4">Primary Technicalities</h2>
+              <div class="image-row mb-4">
+                <img src="static/dlib.png" alt="Pipeline" class="rounded">
+                <img src="static/cv2.jpg" alt="Transformers" class="rounded">
+                <img src="static/flask.png" alt="Flask" class="rounded">
+                <img src="static/Screenshot (128).png" alt="MongoDB" class="rounded">
+              </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    {%include 'footer.html'%}
+</body>
+</html>

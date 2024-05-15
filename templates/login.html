@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    .bg-image-vertical {
+position: relative;
+overflow: hidden;
+background-repeat: no-repeat;
+background-position: right center;
+background-size: auto 100%;
+}
+
+@media (min-width: 1025px) {
+.h-custom-2 {
+height: 100%;
+}
+}
+  </style>
+  {%include 'bootstrap.html'%}
+</head>
+<body>
+  <section class="vh-100">
+    <div class="container-fluid">
+      
+      <div class="row">
+        <div class="col-sm-6 text-black">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class="flash">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          <div style="position: relative; left:14%;" class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+            
+            <form method="post">
+              <h3 class="lead text-center fw-normal mb-3 pb-3" style="font-size: 30px; letter-spacing: 1px;">Log in </h3>
+  
+              <div class="form-outline mb-4">
+                <input style="width: 150%;" name="email" type="email" id="form2Example18" class="form-control form-control-lg" placeholder="Enter Email" />
+                <label class="form-label" for="form2Example18">Email address</label>
+              </div>
+  
+              <div class="form-outline mb-4">
+                <input style="width: 150%;" name="password" type="password" id="form2Example28" class="form-control form-control-lg" placeholder="Enter Password"/>
+                <label class="form-label" for="form2Example28">Password</label>
+              </div>
+  
+              <div class="pt-1 mb-4">
+                <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+              </div>
+  
+              <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+              <p>Don't have an account? <a href="{{url_for('signup')}}" class="link-info">Register here</a></p>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
+            alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</body>
+</html>
